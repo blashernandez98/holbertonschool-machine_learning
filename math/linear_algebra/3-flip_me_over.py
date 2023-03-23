@@ -5,7 +5,7 @@
 def matrix_transpose(matrix: list):
     """ Returns the transpose of a 2D matrix """
 
-    out = [[] for row in matrix]
+    out = [[] for col in matrix[0]]
     for row in matrix:
         for col_idx, col in enumerate(row):
             out[col_idx].append(col)
