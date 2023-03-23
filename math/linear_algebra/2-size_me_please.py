@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-def size_me_up(matrix: list):
+def matrix_shape(matrix: list):
     out = []
     while type(matrix[0]) is list:
         out.append(len(matrix))
