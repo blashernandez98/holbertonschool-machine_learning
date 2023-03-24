@@ -1,14 +1,13 @@
 #!/usr/bin/env python3
 """ Task 12 module """
-import numpy as np
 
 
 def np_elementwise(mat1, mat2):
     """ Returns sum/dif/mul/div of 2 matrices """
 
-    sum = np.add(mat1, mat2)
-    dif = np.subtract(mat1, mat2)
-    mul = np.multiply(mat1, mat2)
-    div = np.divide(mat1, mat2)
+    sum = mat1.__add__(mat2)
+    dif = mat1.__sub__(mat2)
+    mul = mat1.__mul__(mat2)
+    div = mat1.__truediv__(mat2)
 
     return (sum, dif, mul, div)
