@@ -4,11 +4,11 @@
 
 def cat_matrices2D(mat1, mat2, axis=0):
     """ Concatenates two matrices along a specific axis """
+    new = []
     if axis == 0:
         return mat1 + mat2
-    try:
-        for row_idx, row in enumerate(mat1):
-            mat1[row_idx].extend(mat2[row_idx])
-        return mat1
-    except IndexError as e:
-        return None
+
+    for i, (row1, row2) in enumerate(zip(mat1, mat2)):
+        new.append([])
+        new[i] = row1 + row2
+    return new
