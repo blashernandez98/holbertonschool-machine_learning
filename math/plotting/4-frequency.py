@@ -4,10 +4,9 @@ import matplotlib
 matplotlib.use("TkAgg")
 import matplotlib.pyplot as plt
 
-
+# Define seed and generate random collection
 np.random.seed(5)
 student_grades = np.random.normal(68, 15, 50)
-student_grades.sort()
 
 # Define the bin edges for the histogram
 bins = np.arange(0, 110, 10)
@@ -19,7 +18,8 @@ hist, bin_edges = np.histogram(student_grades, bins=bins)
 plt.bar(bin_edges[:-1], hist, width=10, align="edge", edgecolor="black")
 plt.xticks(bin_edges)
 
-# Set the labels for the X-axis and Y-axis
+# Set the title and labels for the X-axis and Y-axis
+plt.title("Project A")
 plt.xlabel('Grades')
 plt.ylabel('Number of students')
 plt.xlim(0, 100)
