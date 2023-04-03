@@ -7,10 +7,10 @@ fruit = np.random.randint(0, 20, (4,3))
 
 # your code here
 names = ["Farrah", "Fred", "Felicia"]
-plt.bar(names, fruit[0], color="r")
-plt.bar(names, fruit[1], color="y", bottom=fruit[0])
-plt.bar(names, fruit[2], color="#ff8000", bottom=fruit[0]+fruit[1])
-plt.bar(names, fruit[3], color="#ffe5b4", bottom=fruit[0]+fruit[1]+fruit[2])
+plt.bar(names, fruit[0], color="r", width=0.5)
+plt.bar(names, fruit[1], color="y", bottom=fruit[0], width=0.5)
+plt.bar(names, fruit[2], color="#ff8000", bottom=fruit[0]+fruit[1], width=0.5)
+plt.bar(names, fruit[3], color="#ffe5b4", bottom=fruit[0]+fruit[1]+fruit[2], width=0.5)
 plt.legend(["apples", "bananas", "oranges", "peaches"])
 plt.ylim(0, 80)
 plt.ylabel("Quantity of Fruit")
