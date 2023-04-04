@@ -4,7 +4,7 @@
 
 def poly_derivative(poly):
     """ Return derivative of poly """
-    if type(poly) is not list or len(poly) < 2:
+    if type(poly) is not list or len(poly) == 0:
         return None
     if len(poly) == 1:
         return [0]
