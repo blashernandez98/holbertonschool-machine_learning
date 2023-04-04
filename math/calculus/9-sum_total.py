@@ -3,7 +3,7 @@
 
 
 def summation_i_squared(n):
-    import numpy as np
     """ Returns sum of squares until n """
-    nums = np.arange(1, n+1)**2
-    return sum(nums)
+    if type(n) is not int:
+        return None
+    return int((n*(n+1)*(2*n+1))/6)
