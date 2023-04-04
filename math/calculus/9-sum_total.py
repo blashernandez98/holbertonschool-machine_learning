@@ -1,4 +1,9 @@
 #!/usr/bin/env python3
+""" Task 9 module """
+
+import numpy as np
 
 def summation_i_squared(n):
-    return sum([i**2 for i in range(1, n)])
+    """ Returns sum of squares until n """
+    nums = np.arange(1, n+1)**2
+    return sum(nums)
