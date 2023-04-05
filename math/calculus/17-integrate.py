@@ -4,13 +4,13 @@
 
 def poly_integral(poly, C=0):
     """ Return integral of poly """
-    if type(poly) is not list or len(poly) == 0:
+    if type(poly) is not list or len(poly) == 0 or type(C) is not int:
         return None
     expo = 1
     out = [C]
     for term in poly:
         new_term = term / expo
-        if is_integer(new_term):
+        if new_term.is_integer():
             out.append(int(new_term))
         else:
             out.append(new_term)
