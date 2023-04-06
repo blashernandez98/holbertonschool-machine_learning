@@ -6,6 +6,8 @@ def poly_integral(poly, C=0):
     """ Return integral of poly """
     if type(poly) is not list or len(poly) == 0 or type(C) is not int:
         return None
+    if poly == [0]:
+        return [C]
     expo = 1
     out = [C]
     for term in poly:
