@@ -20,8 +20,11 @@ class Poisson():
 
     def pmf(self, k):
         """ Returns PMF of @k number of 'successes' """
-        from math import exp, factorial
+        e = 2.7182818285
         if k is None:
             return 0
         k = int(k)
-        return (self.lambtha ** k * exp(-self.lambtha) / factorial(k))
+        fact = 1
+        for i in range(1, k+1):
+            fact *= i
+        return (self.lambtha ** k * (e ** (-self.lambtha)) / fact)
