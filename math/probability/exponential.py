@@ -24,3 +24,10 @@ class Exponential():
         if k is None or k < 0:
             return 0
         return (self.lambtha * (e ** (-self.lambtha * k)))
+
+    def cdf(self, k):
+        """ Returns CDF of @k """
+        e = 2.7182818285
+        if k is None or k < 0:
+            return 0
+        return (1 - (e ** (-self.lambtha * k)))
