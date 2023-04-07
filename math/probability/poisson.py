@@ -28,7 +28,7 @@ class Poisson():
         for i in range(1, k+1):
             fact *= i
         return (self.lambtha ** k * (e ** (-self.lambtha)) / fact)
-    
+
     def cdf(self, k):
         """ Returns CDF of @k number of 'successes' """
         e = 2.7182818285
