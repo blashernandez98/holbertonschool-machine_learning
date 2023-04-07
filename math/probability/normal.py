@@ -5,11 +5,13 @@
 pi = 3.1415926536
 e = 2.7182818285
 
+
 def error_func(x):
     """ Error function """
     ft = 2 / pi ** 0.5
     st = x - (x ** 3 / 3) + (x ** 5 / 10) - (x ** 7 / 42) + (x ** 9 / 216)
     return ft * st
+
 
 class Normal():
     """ Class representing a normal distribution """
