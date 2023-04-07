@@ -23,5 +23,4 @@ class Exponential():
         e = 2.7182818285
         if k is None or k < 0:
             return 0
-        k = int(k)
         return (self.lambtha * (e ** (-self.lambtha * k)))
