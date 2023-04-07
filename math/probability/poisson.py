@@ -21,7 +21,7 @@ class Poisson():
     def pmf(self, k):
         """ Returns PMF of @k number of 'successes' """
         e = 2.7182818285
-        if k is None:
+        if k is None or k < 0:
             return 0
         k = int(k)
         fact = 1
