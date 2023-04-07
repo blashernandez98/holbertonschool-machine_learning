@@ -9,7 +9,7 @@ class Normal():
         """ Custom init method """
 
         if data is None:
-            if stddev < 0:
+            if stddev <= 0:
                 raise ValueError("stddev must be a positive value")
             self.mean = mean
             self.stddev = stddev
