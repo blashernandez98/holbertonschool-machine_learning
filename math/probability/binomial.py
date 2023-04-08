@@ -42,3 +42,10 @@ class Binomial():
         n_choose_k = factorial(self.n) / (factorial(k) * factorial(self.n - k))
         pmf = n_choose_k * (self.p ** k) * ((1 - self.p) ** (self.n - k))
         return pmf
+
+    def cdf(self, k):
+        """ Calculates CDF for given k """
+        k = int(k)
+        if k < 0:
+            return 0
+        return (sum(self.pmf(i) for i in range(0, k+1)))
