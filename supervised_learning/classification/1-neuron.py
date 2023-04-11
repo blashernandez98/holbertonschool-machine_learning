@@ -19,17 +19,17 @@ class Neuron():
         self.__b = 0
         self.__A = 0
 
-        @property
-        def W(self):
-            """ Getter for W """
-            return self.__W
+    @property
+    def W(self):
+        """ Getter for W """
+        return self.__W
 
-        @property
-        def b(self):
-            """ Getter for b """
-            return self.__b
+    @property
+    def b(self):
+        """ Getter for b """
+        return self.__b
 
-        @property
-        def A(self):
-            """ Getter for A """
-            return self.__A
+    @property
+    def A(self):
+        """ Getter for A """
+        return self.__A
