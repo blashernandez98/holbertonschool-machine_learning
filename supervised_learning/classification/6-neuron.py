@@ -63,7 +63,7 @@ class Neuron():
         self.__W -= alpha * dw
         self.__b -= alpha * db
 
-    def train(self, X, Y, iterations=5000, alpha=0.5):
+    def train(self, X, Y, iterations=5000, alpha=0.05):
         """ Trains neuron @iterations times """
 
         if type(iterations) is not int:
