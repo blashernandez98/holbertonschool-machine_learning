@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-""" Task 6 module """
+""" Task 7 module """
 
 import numpy as np
 
@@ -63,8 +63,9 @@ class Neuron():
         self.__W -= alpha * dw
         self.__b -= alpha * db
 
-    def train(self, X, Y, iterations=5000, alpha=0.05):
+    def train(self, X, Y, iterations=5000, alpha=0.05, verbose=True, graph=True, step=100):
         """ Trains neuron @iterations times """
+        import matplotlib.pyplot as plt
 
         if type(iterations) is not int:
             raise TypeError("iterations must be an integer")
@@ -74,9 +75,31 @@ class Neuron():
             raise TypeError("alpha must be a float")
         if alpha <= 0:
             raise ValueError("alpha must be positive")
+        if any((verbose, graph)):
+            if type(step) is not int:
+                raise TypeError("step must be an integer")
+            if step <= 0 or step > iterations:
+                raise ValueError("step must be positive and <= iterations")
 
-        for i in range(iterations):
+        iters = []
+        costs = []
+
+        for i in range(iterations + 1):
+            
             A = self.forward_prop(X)
+            cost = self.cost(Y, A)
+
+            iters.append(i)
+            costs.append(cost)
+
+            if verbose and i % step == 0:
+                print(f"Cost after {i} iterations: {cost}")
+
             self.gradient_descent(X, Y, A, alpha)
+        
+        plt.plot(iters, costs)
+        plt.xlabel("iteration")
+        plt.ylabel("cost")
+        plt.title("Training Cost")
 
         return self.evaluate(X, Y)
