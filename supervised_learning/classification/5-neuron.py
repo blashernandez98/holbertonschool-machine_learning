@@ -58,5 +58,7 @@ class Neuron():
         """ Updates W and B with one step of gradient descent """
         error = A - Y
         m = X.shape[1]
-        self.__W = self.W - (alpha / m) * np.dot(error, X.T)
-        self.__b = round(self.b - (alpha / m) * np.sum(error), 21)
+        dw = np.dot(error, X.T) / m
+        db = np.sum(error) / m
+        self.__W -= alpha * dw
+        self.__b -= alpha * db
