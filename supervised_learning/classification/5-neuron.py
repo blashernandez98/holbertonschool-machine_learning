@@ -59,4 +59,4 @@ class Neuron():
         error = A - Y
         m = X.shape[1]
         self.__W = self.W - (alpha / m) * np.dot(error, X.T)
-        self.__b = round(self.b - (alpha / m) * np.sum(error), 19)
+        self.__b = round(self.b - (alpha / m) * np.sum(error), 21)
