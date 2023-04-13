@@ -24,8 +24,8 @@ class NeuralNetwork():
         int_validate(nx, "nx")
         int_validate(nodes, "nodes")
 
-        self.W1 = np.random.normal(size=(nx, nodes))
-        self.b1 = np.zeros(size=(1, nodes))
+        self.W1 = np.random.normal(size=(nodes, nx))
+        self.b1 = np.zeros(shape=(nodes, 1))
         self.A1 = 0
 
         self.W2 = np.random.normal(size=(1, nodes))
