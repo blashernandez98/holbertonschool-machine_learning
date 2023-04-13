@@ -56,7 +56,7 @@ class NeuralNetwork():
     def b2(self):
         """ Getter for b2 """
         return self.__b2
-    
+
     @property
     def A2(self):
         """ Getter for A2 """
