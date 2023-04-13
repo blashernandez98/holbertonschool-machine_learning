@@ -7,9 +7,9 @@ import numpy as np
 def int_validate(param, name):
     """ Validates type and value for @param """
     if type(param) is not int:
-        raise TypeError(f"{name} must be an integer")
+        raise TypeError("{} must be an integer".format(name))
     if param < 1:
-        raise ValueError(f"{name} must be a positive integer")
+        raise ValueError("{} must be a positive integer".format(name))
 
 
 class NeuralNetwork():
