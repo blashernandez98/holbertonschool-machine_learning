@@ -92,7 +92,7 @@ class NeuralNetwork():
         db2 = (1/m) * np.sum(dz2, axis=1, keepdims=True)
 
         # Derivative of hidden layer
-        dz1 = np.dot(self.W2.T, dz2) * A1
+        dz1 = np.dot(self.W2.T, dz2) * (A1 * (1 - A1))
         dw1 = (1/m) * np.dot(dz1, X.T)
         db1 = (1/m) * np.sum(dz1, axis=1, keepdims=True)
 
