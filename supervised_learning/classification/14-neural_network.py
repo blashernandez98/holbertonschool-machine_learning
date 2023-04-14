@@ -104,6 +104,12 @@ class NeuralNetwork():
     def train(self, X, Y, iterations=5000, alpha=0.05):
         """ Train model over @iterations """
 
+        int_validate(iterations)
+        if type(alpha) is not float:
+            raise TypeError("alpha must be a float")
+        if alpha <= 0:
+            raise ValueError("alpha must be positive")
+
         for i in range(1, iterations + 1):
             self.forward_prop(X)
             self.gradient_descent(X, Y, self.A1, self.A2, alpha)
