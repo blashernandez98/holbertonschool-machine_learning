@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-""" Task 12 module """
+""" Task 13 module """
 
 import numpy as np
 
@@ -82,3 +82,21 @@ class NeuralNetwork():
         """ Evaluates model """
         predictions = self.forward_prop(X)[1]
         return (np.where(predictions >= 0.5, 1, 0), self.cost(Y, predictions))
+
+    def gradient_descent(self, X, Y, A1, A2, alpha=0.05):
+        """ Updates Weights and Biases with one step of gradient descent """
+        m = X.shape[1]
+        # Derivatives of output layer
+        dz2 = A2 - Y
+        dw2 = (1/m) * np.dot(dz2, A1.T)
+        db2 = (1/m) * np.sum(dz2, axis=1, keepdims=True)
+
+        # Derivative of hidden layer
+        dz1 = np.dot(self.W2.T, dz2) * A1
+        dw1 = (1/m) * np.dot(dz1, X.T)
+        db1 = (1/m) * np.sum(dz1, axis=1, keepdims=True)
+
+        self.__W1 = self.W1 - alpha * dw1
+        self.__b1 = self.b1 - alpha * db1
+        self.__W2 = self.W2 - alpha * dw2
+        self.__b2 = self.b2 - alpha * db2
