@@ -104,7 +104,7 @@ class NeuralNetwork():
     def train(self, X, Y, iterations=5000, alpha=0.05):
         """ Train model over @iterations """
 
-        int_validate(iterations)
+        int_validate(iterations, "iterations")
         if type(alpha) is not float:
             raise TypeError("alpha must be a float")
         if alpha <= 0:
