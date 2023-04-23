@@ -36,3 +36,18 @@ class DeepNeuralNetwork():
             self.__weights["W{}".format(i)] = np.random.randn(
                 layers[i], layers[i - 1]) * np.sqrt(2 / layers[i - 1])
             self.__weights["b{}".format(i)] = np.zeros(shape=(layers[i], 1))
+
+    @property
+    def L(self):
+        """ Layers getter """
+        return self.__L
+
+    @property
+    def cache(self):
+        """ Cache getter """
+        return self.__cache
+
+    @property
+    def weights(self):
+        """ Weights getter """
+        return self.__weights
