@@ -25,7 +25,7 @@ class DeepNeuralNetwork():
 
         int_validate(nx, "nx")
         if type(layers) is not list or len(layers) < 1\
-                or any(x < 0 or type(x) is not int for x in layers):
+                or any(map(lambda x: x < 0 or type(x) is not int, layers)):
             raise TypeError("layers must be a list of positive integers")
 
         self.L = len(layers)
