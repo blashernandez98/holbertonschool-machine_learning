@@ -33,6 +33,6 @@ class DeepNeuralNetwork():
         self.weights = {}
         layers.insert(0, nx)
         for i in range(1, len(layers)):
-            self.weights[f"W{i}"] = np.random.randn(
+            self.weights["W{}".format(i)] = np.random.randn(
                 layers[i], layers[i - 1]) * np.sqrt(2 / layers[i - 1])
-            self.weights[f"b{i}"] = np.zeros(shape=(layers[i], 1))
+            self.weights["b{}".format(i)] = np.zeros(shape=(layers[i], 1))
