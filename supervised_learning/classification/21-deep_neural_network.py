@@ -84,16 +84,15 @@ class DeepNeuralNetwork():
         predictions = self.forward_prop(X)[0]
         return (np.where(predictions > 0.5, 1, 0), self.cost(Y, predictions))
 
-    def gradient_descent(self, Y, cache, alpha=0.5):
+    def gradient_descent(self, Y, cache, alpha=0.05):
         """ Calculates one pass of gradient descent """
 
         dz = 0
         m = Y.shape[1]
         for i in range(self.L, 0, -1):
-            W_i = self.weights["W" + str(i)]
+            W_i, b_i = self.weights["W" + str(i)], self.weights["b" + str(i)]
             A_i = self.cache["A" + str(i)]
             A_prev = self.cache["A" + str(i-1)]
-            b_i = self.weights["b" + str(i)]
 
             if i == self.L:
                 dz = A_i - Y
@@ -101,6 +100,7 @@ class DeepNeuralNetwork():
                 W_next = self.weights["W" + str(i+1)]
                 dz = np.dot(W_next.T, dz) * \
                     (sigmoid(A_i) * (1 - sigmoid(A_i)))
+
             dw = (1 / m) * np.dot(dz, A_prev.T)
             db = (1 / m) * np.sum(dz, axis=1, keepdims=True)
 
