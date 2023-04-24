@@ -31,11 +31,14 @@ class DeepNeuralNetwork():
         self.__L = len(layers)
         self.__cache = {}
         self.__weights = {}
-        layers.insert(0, nx)
-        for i in range(1, len(layers)):
-            self.__weights["W{}".format(i)] = np.random.randn(
-                layers[i], layers[i - 1]) * np.sqrt(2 / layers[i - 1])
-            self.__weights["b{}".format(i)] = np.zeros(shape=(layers[i], 1))
+        for i in range(1, self.L + 1):
+            if i == 1:
+                self.__weights["W{}".format(i)] = np.random.randn(
+                    layers[i - 1], nx) * np.sqrt(2 / nx)
+            else:
+                self.__weights["W{}".format(i)] = np.random.randn(
+                    layers[i - 1], layers[i - 2]) * np.sqrt(2 / layers[i - 2])
+            self.__weights["b" + str(i)] = np.zeros((layers[i - 1], 1))
 
     @property
     def L(self):
@@ -56,9 +59,11 @@ class DeepNeuralNetwork():
         """ Calculates forward propagation """
         self.__cache["A0"] = X
         for i in range(1, self.L + 1):
-            zI = np.dot(
-                self.weights["W{}".format(i)], self.cache["A{}".format(i-1)])\
-                + self.weights["b{}".format(i)]
+            weight = self.weights["W{}".format(i)]
+            prev_activation = self.cache["A{}".format(i-1)]
+            bias = self.weights["b{}".format(i)]
+
+            zI = np.matmul(weight, prev_activation) + bias
             self.__cache["A{}".format(i)] = 1 / (1 + np.exp(-zI))
 
         return self.cache["A{}".format(self.L)], self.cache
