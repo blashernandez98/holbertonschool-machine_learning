@@ -10,9 +10,8 @@ def create_layer(prev, n, activation):
     initializer = tf.contrib.layers.\
         variance_scaling_initializer(mode="FAN_AVG")
 
-    W = tf.Variable(initializer([prev.shape[1].value, n]))
-    b = tf.Variable(tf.zeros([n]))
+    # Create the layer:
+    layer = tf.layers.Dense(units=n, name="layer", activation=activation,
+                            kernel_initializer=initializer)
 
-    z = tf.matmul(prev, W) + b
-
-    return activation(z)
+    return layer(prev)
