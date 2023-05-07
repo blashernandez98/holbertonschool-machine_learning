@@ -27,7 +27,6 @@ def train(X_train, Y_train, X_valid, Y_valid, layer_sizes,
     accuracy = calculate_accuracy(Y, Y_pred)
     # Initialize variables and create saver
     init = tf.global_variables_initializer()
-    saver = tf.train.Saver()
     with tf.Session() as sess:
         # Initialize variables
         sess.run(init)
@@ -38,7 +37,7 @@ def train(X_train, Y_train, X_valid, Y_valid, layer_sizes,
         tf.add_to_collection('accuracy', accuracy)
         tf.add_to_collection('train_op', train_op)
 
-        # Train the model:
+        # Train model:
         for i in range(iterations + 1):
             cost_train, acc_train = sess.run(
                 [loss, accuracy], feed_dict={X: X_train, Y: Y_train})
@@ -55,7 +54,8 @@ def train(X_train, Y_train, X_valid, Y_valid, layer_sizes,
             if i < iterations:
                 sess.run(train_op, feed_dict={X: X_train, Y: Y_train})
 
-        # Save the trained model using a TensorFlow Saver object:
+        # Save model
+        saver = tf.train.Saver()
         save_path = saver.save(sess, save_path)
 
     return save_path
