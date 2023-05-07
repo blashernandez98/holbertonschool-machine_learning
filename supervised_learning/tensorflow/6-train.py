@@ -14,26 +14,24 @@ forward_prop = __import__('2-forward_prop').forward_prop
 def train(X_train, Y_train, X_valid, Y_valid, layer_sizes,
           activations, alpha, iterations, save_path="/tmp/model.ckpt"):
 
-    x, y = create_placeholders(X_train.shape[1], Y_train.shape[1])
+    X, Y = create_placeholders(X_train.shape[1], Y_train.shape[1])
     # Forward propagation
-    y_pred = forward_prop(x, layer_sizes, activations)
+    Y_pred = forward_prop(X, layer_sizes, activations)
     # Loss function
-    loss = calculate_loss(y, y_pred)
+    loss = calculate_loss(Y, Y_pred)
     # Optimization
     train_op = create_train_op(loss, alpha)
     # Accuracy operations
-    accuracy = calculate_accuracy(y, y_pred)
-    accuracy_valid = calculate_accuracy(
-                     Y_valid, forward_prop(X_valid, layer_sizes, activations))
+    accuracy = calculate_accuracy(Y, Y_pred)
     # Initialize variables and create saver
     init = tf.global_variables_initializer()
     saver = tf.train.Saver()
     with tf.Session() as sess:
         # Initialize variables
         sess.run(init)
-        tf.add_to_collection('X', x)
-        tf.add_to_collection('Y', y)
-        tf.add_to_collection('Y_pred', y_pred)
+        tf.add_to_collection('X', X)
+        tf.add_to_collection('Y', Y)
+        tf.add_to_collection('Y_pred', Y_pred)
         tf.add_to_collection('loss', loss)
         tf.add_to_collection('accuracy', accuracy)
         tf.add_to_collection('train_op', train_op)
