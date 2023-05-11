@@ -6,7 +6,7 @@ import tensorflow.keras as k
 
 
 def train_model(network, data, labels, batch_size,
-                verbose=True, shuffle=False):
+                epochs, verbose=True, shuffle=False):
     """
     Trains a model using mini-batch gradient descent:
 
