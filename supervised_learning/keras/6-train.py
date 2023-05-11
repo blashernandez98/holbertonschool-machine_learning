@@ -34,6 +34,8 @@ def train_model(network, data, labels, batch_size, epochs,
         early_stop = K.callbacks.EarlyStopping(monitor='val_loss',
                                                patience=patience)
         callbacks = [early_stop]
+    else:
+        callbacks = None
 
     hist_obj = network.fit(x=data,
                            y=labels,
