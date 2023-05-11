@@ -2,7 +2,7 @@
 """ Task 2 module """
 
 
-from tensorflow import keras as k
+import tensorflow.keras as k
 
 
 def optimize_model(network, alpha, beta1, beta2):
