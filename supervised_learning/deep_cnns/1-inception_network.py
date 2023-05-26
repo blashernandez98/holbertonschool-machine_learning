@@ -3,6 +3,7 @@
 
 
 import tensorflow.keras as K
+inception_block = __import__('0-inception_block').inception_block
 
 
 def inception_network():
@@ -15,8 +16,6 @@ def inception_network():
     should use a rectified linear activation (ReLU)
     Returns: the keras model
     """
-
-    inception_block = __import__('0-inception_block').inception_block
 
     init = K.initializers.he_normal()
     # input data variable
