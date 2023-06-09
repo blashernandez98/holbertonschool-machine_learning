@@ -75,4 +75,9 @@ class Yolo:
             box[..., 2] = x2
             box[..., 3] = y2
 
+        for i, box in enumerate(box_confidences):
+            box_confidences[i] = (1 / (1 + np.exp(-box)))
+        for i, box in enumerate(box_class_probs):
+            box_class_probs[i] = (1 / (1 + np.exp(-box)))
+
         return boxes, box_confidences, box_class_probs
