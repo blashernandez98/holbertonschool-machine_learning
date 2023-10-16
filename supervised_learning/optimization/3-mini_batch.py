@@ -1,9 +1,7 @@
 #!/usr/bin/env python3
 """ 3. Mini-batch """
 
-import tensorflow as tf
-import numpy as np
-
+import tensorflow.compat.v1 as tf
 shuffle_data = __import__("2-shuffle_data").shuffle_data
 
 
