@@ -64,6 +64,9 @@ def train_mini_batch(
             else:
                 complete = m // batch_size + 1
 
+            if (i == epochs):
+                break
+
             for j in range(complete):
                 start = j * batch_size
                 end = (j + 1) * batch_size
