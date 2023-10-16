@@ -38,10 +38,14 @@ def train_mini_batch(
         for i in range(epochs + 1):
 
             train_cost = sess.run(loss, feed_dict={x: X_train, y: Y_train})
-            train_accuracy = sess.run(accuracy, feed_dict={x: X_train, y: Y_train})
+            train_accuracy = sess.run(
+                accuracy, feed_dict={x: X_train, y: Y_train}
+            )
 
             valid_cost = sess.run(loss, feed_dict={x: X_valid, y: Y_valid})
-            valid_accuracy = sess.run(accuracy, feed_dict={x: X_valid, y: Y_valid})
+            valid_accuracy = sess.run(
+                accuracy, feed_dict={x: X_valid, y: Y_valid}
+            )
 
             print(
                 "After {} epochs:".format(i),
@@ -71,7 +75,9 @@ def train_mini_batch(
                 sess.run(train_op, feed_dict={x: X_mini, y: Y_mini})
 
                 if j != 0 and (j + 1) % 100 == 0:
-                    mini_cost = sess.run(loss, feed_dict={x: X_mini, y: Y_mini})
+                    mini_cost = sess.run(
+                        loss, feed_dict={x: X_mini, y: Y_mini}
+                    )
                     mini_accuracy = sess.run(
                         accuracy, feed_dict={x: X_mini, y: Y_mini}
                     )
@@ -84,4 +90,3 @@ def train_mini_batch(
         # Save the model after training
         save_path = saver.save(sess, save_path)
     return save_path
-
