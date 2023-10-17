@@ -48,10 +48,10 @@ def train_mini_batch(
             )
 
             print("After {} epochs:".format(i))
-            print("\n\tTraining Cost: {}".format(train_cost))
-            print("\n\tTraining Accuracy: {}".format(train_accuracy))
-            print("\n\tValidation Cost: {}".format(valid_cost))
-            print("\n\tValidation Accuracy: {}".format(valid_accuracy))
+            print("\tTraining Cost: {}".format(train_cost))
+            print("\tTraining Accuracy: {}".format(train_accuracy))
+            print("\tValidation Cost: {}".format(valid_cost))
+            print("\tValidation Accuracy: {}".format(valid_accuracy))
 
             # Shuffle the data in the training
             X_shuffled, Y_shuffled = shuffle_data(X_train, Y_train)
@@ -83,8 +83,8 @@ def train_mini_batch(
                         accuracy, feed_dict={x: X_mini, y: Y_mini}
                     )
                     print("\tStep {}:".format(j + 1))
-                    print("\n\t\tCost: {}".format(mini_cost))
-                    print("\n\t\tAccuracy: {}".format(mini_accuracy))
+                    print("\t\tCost: {}".format(mini_cost))
+                    print("\t\tAccuracy: {}".format(mini_accuracy))
 
         # Save the model after training
         save_path = saver.save(sess, save_path)
