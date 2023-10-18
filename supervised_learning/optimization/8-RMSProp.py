@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """ 8. RMSProp upgraded """
 
-import tensorflow.compat.v1 as tf
+import tensorflow.compat.v1 as tf  # type: ignore
 
 
 def create_RMSProp_op(loss, alpha, beta2, epsilon):
