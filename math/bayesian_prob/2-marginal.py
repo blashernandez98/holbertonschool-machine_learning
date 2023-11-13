@@ -2,8 +2,8 @@
 """ Task 2. Marginal Probability """
 
 import numpy as np
-from 1-intersection import intersection
-from 1-intersection import factorial
+intersection = __import__('1-intersection').intersection
+factorial = __import__('1-intersection').factorial
 
 
 def marginal(x, n, P, Pr):
