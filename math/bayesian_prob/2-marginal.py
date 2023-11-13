@@ -40,7 +40,7 @@ def marginal(x, n, P, Pr):
         raise ValueError("Pr must sum to 1")
 
     # Calculate intersection
-    intersection = intersection(x, n, P, Pr)
+    intersection_values = intersection(x, n, P, Pr)
     # Calculate marginal probability
-    marginal = np.sum(intersection)
+    marginal = np.sum(intersection_values)
     return marginal
