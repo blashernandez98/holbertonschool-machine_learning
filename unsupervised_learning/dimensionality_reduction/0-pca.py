@@ -4,13 +4,12 @@
 import numpy as np
 
 
-def pca(X, ndim):
+def pca(X, var=0.95):
     """
     Function that performs PCA on a dataset
     """
-    X_m = X - np.mean(X, axis=0)
-    u, s, vh = np.linalg.svd(X_m)
-    W = vh.T
-    Wr = W[:, :ndim]
-    T = np.matmul(X_m, Wr)
-    return T
+    u, s, vh = np.linalg.svd(X)
+    total = np.cumsum(s)
+    total /= total[-1]
+    r = np.argwhere(total >= var)[0, 0]
+    return vh[:r + 1].T
