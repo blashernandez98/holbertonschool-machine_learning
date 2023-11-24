@@ -17,7 +17,7 @@ def markov_chain(P, s, t=1):
         return None
     if type(t) is not int or t < 0:
         return None
-    if P.shape[0] != P.shape[1] or s.shape[0] != P.shape[0]:
+    if P.shape[0] != P.shape[1] or s.shape[1] != P.shape[0]:
         return None
 
     for _ in range(t):
