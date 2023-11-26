@@ -30,7 +30,7 @@ def regular(P):
     while True:
         s_prev = s
         s = np.matmul(s, P)
-        if np.all(np.isclose(s, s_prev)):
+        if np.all(np.allclose(s, s_prev)):
             return s
         if t == 1000:
             return None
