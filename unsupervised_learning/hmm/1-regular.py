@@ -27,11 +27,10 @@ def regular(P):
     s = np.ones((1, n)) / n
     t = 1
 
-    while True:
+    while t < 500:
         s_prev = s
         s = np.matmul(s, P)
-        if np.all(np.allclose(s, s_prev)):
+        if np.all(np.allclose(s, s_prev, atol=1e-20, rtol=0)):
             return s
-        if t == 1000:
-            return None
         t += 1
+    return None
